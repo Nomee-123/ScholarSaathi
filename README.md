@@ -30,3 +30,9 @@ Scheme-specific eligibility criteria and required document lists are **not verif
 ScholarSaathi does not upload documents, submit applications, or guarantee eligibility or approval. Answers and checklist states are stored in this browser's IndexedDB. Clearing site data in the browser also removes them.
 
 The service worker caches the built application shell and its local JavaScript/CSS assets. The first visit requires a network connection; external official portal links require a connection.
+
+## 👥 Our Team
+
+| Soumya Singh | [@SoumyaNeelam](https://github.com/SoumyaNeelam) |
+| Muskan | [@muskansiya](https://github.com/muskansiya) |
+| Nomee Singh | [@Nomee-123](https://github.com/Nomee-123) |
