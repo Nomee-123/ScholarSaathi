@@ -123,11 +123,9 @@ The application is designed to support desktop and mobile screen sizes, with acc
 | TypeScript | Type-safe application development |
 | Vite | Development server and production build |
 | CSS | Responsive styling and interface design |
-| IndexedDB | Local persistence for supported application data |
-| Service Worker | Offline caching support |
-| Supabase | Planned or configured authentication and cloud services, depending on deployment status |
-
-Only list Supabase authentication and cloud synchronization as completed features once they are configured and tested against your actual project.
+| IndexedDB | Local persistence for preparation, finder profile, and saved scholarship data |
+| Service Worker | Caches the application shell and same-origin assets for limited offline use |
+| Supabase Auth | Optional email/password authentication when configured; profile and saved-scholarship cloud sync are not implemented |
 
 ## Quickstart
 
@@ -154,13 +152,15 @@ npm install
 
 ### 3. Configure environment variables
 
-If your current setup requires environment variables, check `.env.example` and the project's setup documentation.
+The app runs in guest mode without environment variables. Supabase email/password authentication is optional and disabled until configured. To enable it, copy `.env.example` to `.env.local`:
 
-Create `.env.local` only when needed, and use your own valid configuration.
+```powershell
+Copy-Item .env.example .env.local
+```
 
-**Never commit `.env.local`, passwords, service-role keys, or other secrets.**
+Set `VITE_SUPABASE_URL` to your Supabase project URL and `VITE_SUPABASE_ANON_KEY` to its publishable key (or legacy anon key). These `VITE_` values are included in browser code; use only the public key, never a secret or `service_role` key. Keep `.env.local` local and do not commit it. For provider and redirect setup, see [supabase/SETUP.md](supabase/SETUP.md).
 
-The local prototype should be run according to the configuration currently implemented in the repository.
+Without both valid values, authentication remains unavailable while local guest features continue to work. Authentication does not enable cloud profile or saved-scholarship synchronization.
 
 ### 4. Start the development server
 
@@ -174,18 +174,20 @@ Open the local URL printed by Vite in your terminal. It is commonly:
 http://localhost:5173
 ```
 
-### 5. Validate the project
+### 5. Run available checks
 
-Run the lint and production build commands:
+The project has no automated test script or automated test files. Run the available lint and production build checks:
 
 ```bash
 npm run lint
 npm run build
 ```
 
-A successful build confirms that the project compiles; it does not by itself prove that every user interaction or external integration works.
+A successful build confirms that the project compiles; neither command exercises user interactions or external integrations. See [docs/TEST_CASES.md](docs/TEST_CASES.md) for manual test cases, which have not been executed automatically.
 
-# dashboard..
+The sample scholarship records are in [sample-data/scholarships.json](sample-data/scholarships.json). They mirror the current application data for development and testing; they are not an independently verified or current source of scholarship requirements or deadlines. See [docs/TECHNICAL_DESIGN.md](docs/TECHNICAL_DESIGN.md) for the implemented architecture.
+
+## Dashboard
 
 ![ScholarSaathi Dashboard](public/Screenshots/dashboard.png)
 
@@ -218,8 +220,7 @@ Progress Tracking
    v
 Official Application Portal
 ```
-# preparation..
-
+## Preparation workflow
 
 ![ScholarSaathi Preparation](public/Screenshots/preparation.png)
 
@@ -235,8 +236,7 @@ ScholarSaathi distinguishes between potential matches and verified eligibility.
 
 This approach helps reduce misleading eligibility claims.
 
-# working 
-
+## Working prototype
 
 ![ScholarSaathi Working](public/Screenshots/working.png)
 
@@ -306,3 +306,6 @@ ScholarSaathi is an evolving prototype. Its purpose is to help students move bey
 
 **Discover opportunities. Understand requirements. Prepare for your future.**
 
+## License
+
+Original ScholarSaathi project code is licensed under the MIT License; see [LICENSE](LICENSE). Third-party components, dependencies, and assets remain subject to their respective licenses and are not relicensed by this project license.
