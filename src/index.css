@@ -1,0 +1,48 @@
+:root {
+  font-family: 'Segoe UI', 'Noto Sans Devanagari', Arial, sans-serif;
+  color: #1f2d29;
+  background: #fafbf8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  --ink: #1d3029;
+  --navy: #17372f;
+  --muted: #6d7e75;
+  --muted-dark: #53665d;
+  --line: #e3e9e3;
+  --line-strong: #d5dfd6;
+  --green: #16845f;
+  --green-dark: #116b4e;
+  --green-light: #e8f3eb;
+  --green-soft: #f1f7f1;
+  --cream: #fafbf8;
+  --surface: #fff;
+  --gold: #a47326;
+  --gold-soft: #fbf5e9;
+  --danger: #ad4242;
+  --shadow-sm: 0 2px 8px rgba(27, 55, 41, .045);
+  --shadow-md: 0 12px 34px rgba(27, 55, 41, .08);
+  --radius-sm: 9px;
+  --radius-md: 15px;
+  --radius-lg: 22px;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 94px; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select { font: inherit; }
+button { color: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .48; }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid #d49536;
+  outline-offset: 3px;
+}
+a { color: inherit; }
+::selection { background: #d9ecdf; color: #17372f; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
